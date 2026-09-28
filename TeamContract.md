@@ -69,3 +69,5 @@ Team Member Signatures:
 
 Alexandra Lubczenko
 Alisia Lee
+Yeonji Lee
+Capucine Crouzet
