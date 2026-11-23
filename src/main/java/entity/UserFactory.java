@@ -8,14 +8,16 @@ import java.util.List;
  */
 public class UserFactory {
 
-    public User create(String name, String password) {
+    public static User create(String name, String password) {
         return new User(name, password);
     }
-    public Tutor createTutor(User existing, String bio, String title, ArrayList<String> subjects,
-                             int price, String contact) {
+    public static Tutor createTutor(User existing, String name, String bio, String program, int year, ArrayList<String> subjects,
+                                    int price, String contact) {
         Tutor tutor = new Tutor(existing.getUsername(), existing.getPassword());
+        tutor.setName(name);
         tutor.setDescription(bio);
-        tutor.setTitle(title);
+        tutor.setProgram(program);
+        tutor.setYear(year);
         tutor.setCourses(new ArrayList<>(subjects));
         tutor.setPrice(price);
         tutor.setContact(contact);

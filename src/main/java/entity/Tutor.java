@@ -1,16 +1,18 @@
 package entity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Tutor class.
  */
 public class Tutor extends User {
-    public String profilename;
-    public String title;
-    public int price;
+    public String name;
+    public String program;
+    public int year;
+    public int rate;
     public float rating;
-    public ArrayList<String> courses;
+    public List<String> courses;
     public String description;
     public String contact;
 
@@ -23,30 +25,39 @@ public class Tutor extends User {
     }
 
     public void setName(String name) {
-        this.profilename = name;
+        this.name = name;
     }
 
     public void setPrice(int price) {
-        this.price = price;
+        this.rate = price;
     }
 
     public void setRating(int rating) {
         this.rating = 0;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setYear(int year) {this.year = year;}
+
+    public void setProgram(String program) {
+        this.program = program;
     }
 
-    public void setCourses(ArrayList<String> courses) {
-        this.courses = courses;
-    }
+    public void setCourses(List<String> courses) {this.courses = courses;}
 
-    public void setContact(String contact) {
-        this.contact = contact;
-    }
+    public void setContact(String contact) {this.contact = contact;}
 
-    public String getTutorName() {
-        return this.profilename;
-    }
+    public String getTutorName() {return this.name;}
+
+    public List<String> getCourses() { return this.courses; }
+
+    public String getProgram() { return this.program; }
+
+    public int getYear() {return this.year;}
+
+    public int getPrice() { return this.rate; }
+
+
+    public String getDescription() {return this.description;}
+
+    public String getContact() {return this.contact;}
 }

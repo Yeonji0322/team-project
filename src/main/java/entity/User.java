@@ -20,13 +20,16 @@ public class User {
         }
         this.username = name;
         this.password = password;
+        this.saved_tutors = null;
     }
 
-    public String getUsername() {
-        return username;
-    }
+    public String getUsername() {return username;}
 
     public String getPassword() {
         return password;
     }
+
+    public void addSavedTutor(Tutor tutor) {this.saved_tutors.add(tutor);}
+
+    // still need to add remove saved tutor!
 }
