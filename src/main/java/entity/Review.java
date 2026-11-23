@@ -4,7 +4,7 @@ public class Review {
     private final User reviewer;
     private final Tutor tutor;
     private float rating;
-    private final String contents;
+    private String contents;
 
     public Review(User reviewer, Tutor tutor, int rating, String contents) {
         this.reviewer = reviewer;
@@ -19,6 +19,14 @@ public class Review {
 
     public void setRating(float rating) {
         this.rating = rating;
+    }
+
+    public String getContents() {
+        return this.contents;
+    }
+
+    public void setContents(String contents) {
+        this.contents = contents;
     }
 
 

@@ -9,7 +9,6 @@ public class User {
     private final String username;
     private String password;
     private ArrayList<Tutor> saved_tutors;
-    private ArrayList<Review> reviews;
 
     public User(String name, String password) {
         if ("".equals(name)) {
