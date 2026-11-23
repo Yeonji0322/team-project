@@ -20,6 +20,18 @@ public class TutorLoggedInView extends JFrame {
             panel.add(welcome);
             panel.add(Box.createRigidArea(new Dimension(0, 20)));
 
+            JButton save = new JButton("Saved Tutors");
+            save.setSize(30, 20);
+            save.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+            panel.add(save);
+            panel.add(Box.createRigidArea(new Dimension(0, 10)));
+
+            JButton search = new JButton("Browse Tutors");
+            search.setSize(30, 20);
+            search.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+            panel.add(search);
+            panel.add(Box.createRigidArea(new Dimension(0, 10)));
+
             JButton view = new JButton("View Profile");
             view.setSize(30, 20);
             view.setAlignmentX(JComponent.CENTER_ALIGNMENT);

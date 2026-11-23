@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class ProfileInputData {
 
-    private final String name;
-    private final int price;
-    private final ArrayList<String> courses;
-    private final String description;
-    private final String contact;
+    private static String name = "";
+    private static int price;
+    private static ArrayList<String> courses;
+    private static String description;
+    private static String contact;
 
     public ProfileInputData(String name, int price, ArrayList<String> courses, String description, String contact) {
         this.name = name;
@@ -18,23 +18,23 @@ public class ProfileInputData {
         this.contact = contact;
     }
 
-    public String getTutorName() {
+    public static String getTutorName() {
         return name;
     }
 
-    public int getPrice() {
+    public static int getPrice() {
         return price;
     }
 
-    public ArrayList<String> getCourses() {
+    public static ArrayList<String> getCourses() {
         return courses;
     }
 
-    public String getDescription() {
+    public static String getDescription() {
         return description;
     }
 
-    public String getContact() {
+    public static String getContact() {
         return contact;
     }
 }
