@@ -10,7 +10,8 @@ public class ProfileCreationViewModel {
      */
         public static final String WINDOW_LABEL = "Create Profile";
         public static final String NAME_LABEL = "Name:";
-        public static final String TITLE_LABEL = "Program and year, or occupation:";
+        public static final String TITLE_LABEL = "Degree:";
+        public static final String YEAR_LABEL = "Year:";
         public static final String COURSE_LABEL = "Courses:";
         public static final String PRICE_LABEL = "Hourly charge:";
 
@@ -45,4 +46,3 @@ public class ProfileCreationViewModel {
             }
         }
     }
-}

@@ -31,7 +31,7 @@ public class MakeProfileView extends JFrame {
             panel.add(nameField);
             panel.add(Box.createRigidArea(new Dimension(0, 6)));
 
-            JLabel occup = new JLabel("Program and year, or occupation: ");
+            JLabel occup = new JLabel("Program:");
             occup.setAlignmentX(Component.LEFT_ALIGNMENT);
             panel.add(occup);
             panel.add(Box.createRigidArea(new Dimension(0, 3)));
@@ -40,6 +40,17 @@ public class MakeProfileView extends JFrame {
             program.setMaximumSize(program.getPreferredSize());
             program.setAlignmentX(Component.LEFT_ALIGNMENT);
             panel.add(program);
+            panel.add(Box.createRigidArea(new Dimension(0, 6)));
+
+            JLabel year = new JLabel("Year:");
+            year.setAlignmentX(Component.LEFT_ALIGNMENT);
+            panel.add(year);
+            panel.add(Box.createRigidArea(new Dimension(0, 3)));
+
+            JTextField yearField = new JTextField(3);
+            yearField.setMaximumSize(yearField.getPreferredSize());
+            yearField.setAlignmentX(Component.LEFT_ALIGNMENT);
+            panel.add(yearField);
             panel.add(Box.createRigidArea(new Dimension(0, 6)));
 
             JLabel price = new JLabel("Charge/Hour (CAD): ");
@@ -109,6 +120,7 @@ public class MakeProfileView extends JFrame {
             save.addActionListener(e -> {
                 String nameText = nameField.getText().trim();
                 String progText = program.getText().trim();
+                String yearText = yearField.getText().trim();
                 String priceText = priceField.getText().trim();
                 String descText = description.getText().trim();
                 String contactText = contactField.getText().trim();
@@ -116,7 +128,8 @@ public class MakeProfileView extends JFrame {
                 // Save to a text file
                 try (FileWriter writer = new FileWriter("profile.txt", true)) {
                     writer.write("Name: " + nameText + "\n");
-                    writer.write("Program/Occupation: " + progText + "\n");
+                    writer.write("Program: " + progText + "\n");
+                    writer.write("Year: " + yearText + "\n");
                     writer.write("Price: " + priceText + "\n");
                     writer.write("Description: " + descText + "\n");
                     writer.write("Contact: " + contactText + "\n");

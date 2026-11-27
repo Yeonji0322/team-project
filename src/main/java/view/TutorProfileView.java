@@ -1,16 +1,18 @@
 package view;
 
-import data_access.InMemoryUserDataAccessObject;
 import entity.Tutor;
+import entity.User;
+import entity.UserFactory;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.util.List;
 
 public class TutorProfileView extends JFrame {
     // placeholder tutor until integration!
-    Tutor tutor = new Tutor("name", "pword");
+    User user = UserFactory.create("user1", "pword");
+    List<String> subjects = List.of("CSC108", "STA130", "CSC148", "CSC165");
+    Tutor tutor = UserFactory.createTutor("Alex", "hi im a tutor i guess. I got super great grades and can help you too.", "Bioinformatics BSC",2, subjects, 30, "lexi.lubczenko@mail.utoronto.ca");
 
     public TutorProfileView() {
         SwingUtilities.invokeLater(() -> {
@@ -25,115 +27,38 @@ public class TutorProfileView extends JFrame {
             panel.add(title);
             panel.add(Box.createRigidArea(new Dimension(0, 15)));
 
-            Tutor tutor;
-            JLabel name = new JLabel(tutor.name);
+            JLabel name = new JLabel(tutor.getTutorName());
             name.setAlignmentX(Component.LEFT_ALIGNMENT);
             panel.add(name);
-            panel.add(Box.createRigidArea(new Dimension(0, 3)));
+            panel.add(Box.createRigidArea(new Dimension(0, 10)));
 
-            JTextField nameField = new JTextField(10);
-            nameField.setMaximumSize(nameField.getPreferredSize());
-            nameField.setAlignmentX(Component.LEFT_ALIGNMENT);
-            panel.add(nameField);
-            panel.add(Box.createRigidArea(new Dimension(0, 6)));
-
-            JLabel occup = new JLabel("Program and year, or occupation: ");
+            JLabel occup = new JLabel(tutor.getProgram() + ", Year " + tutor.getYear());
             occup.setAlignmentX(Component.LEFT_ALIGNMENT);
             panel.add(occup);
-            panel.add(Box.createRigidArea(new Dimension(0, 3)));
+            panel.add(Box.createRigidArea(new Dimension(0, 10)));
 
-            JTextField program = new JTextField(30);
-            program.setMaximumSize(program.getPreferredSize());
-            program.setAlignmentX(Component.LEFT_ALIGNMENT);
-            panel.add(program);
-            panel.add(Box.createRigidArea(new Dimension(0, 6)));
-
-            JLabel price = new JLabel("Charge/Hour (CAD): ");
-            name.setAlignmentX(Component.LEFT_ALIGNMENT);
+            JLabel price = new JLabel("Hourly Price: " + String.valueOf(tutor.getPrice()));
+            price.setAlignmentX(Component.LEFT_ALIGNMENT);
             panel.add(price);
-            panel.add(Box.createRigidArea(new Dimension(0, 3)));
+            panel.add(Box.createRigidArea(new Dimension(0, 10)));
 
-            JTextField priceField = new JTextField(3);
-            priceField.setMaximumSize(priceField.getPreferredSize());
-            priceField.setAlignmentX(Component.LEFT_ALIGNMENT);
-            panel.add(priceField);
-            panel.add(Box.createRigidArea(new Dimension(0, 6)));
 
-            JLabel courses = new JLabel("Add Courses:");
-            courses.setAlignmentX(Component.LEFT_ALIGNMENT);
-            panel.add(courses);
-            panel.add(Box.createRigidArea(new Dimension(0, 3)));
-
-            JPanel coursediff = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 5));
-            coursediff.setAlignmentX(Component.LEFT_ALIGNMENT);
-            JTextField courseField = new JTextField(6);
-            JButton addButton = new JButton("+ADD");
-            addButton.addActionListener(e -> {
-
-            });
-            coursediff.add(courseField);
-            coursediff.add(addButton);
-            coursediff.setMaximumSize(new Dimension(Integer.MAX_VALUE, coursediff.getPreferredSize().height));
-            // bug fix: keep the FlowLayout from expanding
-            panel.add(coursediff);
-            panel.add(Box.createRigidArea(new Dimension(0, 40)));
-            // ...but still put space between for courses to pop up!
-
-            JLabel describe = new JLabel("Description:");
+            JLabel describe = new JLabel(tutor.getDescription());
             describe.setAlignmentX(Component.LEFT_ALIGNMENT);
-            panel.add(Box.createRigidArea(new Dimension(0, 3)));
             panel.add(describe);
-            JTextArea description = new JTextArea(9, 6);
-            description.setLineWrap(true);
-            description.setWrapStyleWord(true);
-            // Wrap it inside a JScrollPane for scroll function! :)
-            JScrollPane scrollPane = new JScrollPane(description);
-            scrollPane.setAlignmentX(Component.LEFT_ALIGNMENT);
-            Dimension boxSize = new Dimension(Integer.MAX_VALUE, 100);
-            scrollPane.setPreferredSize(boxSize);
-            scrollPane.setMaximumSize(boxSize);
-            panel.add(scrollPane);
-            panel.add(Box.createRigidArea(new Dimension(0, 30)));
+            panel.add(Box.createRigidArea(new Dimension(0, 10)));
 
-            JLabel contact = new JLabel("Your Contact: ");
+
+            JLabel contact = new JLabel("Contact me!: " + tutor.getContact());
             contact.setAlignmentX(Component.LEFT_ALIGNMENT);
             panel.add(contact);
-            panel.add(Box.createRigidArea(new Dimension(0, 3)));
+            panel.add(Box.createRigidArea(new Dimension(0, 10)));
 
-            JTextField contactField = new JTextField(30);
-            contactField.setMaximumSize(contactField.getPreferredSize());
-            contactField.setAlignmentX(Component.LEFT_ALIGNMENT);
-            panel.add(contactField);
-            panel.add(Box.createRigidArea(new Dimension(0, 20)));
-
-            JButton save = new JButton("SAVE");
-            panel.add(save);
             JButton back = new JButton("BACK");
             panel.add(back);
 
             // take data entered and save to a file
-            save.addActionListener(e -> {
-                String nameText = nameField.getText().trim();
-                String progText = program.getText().trim();
-                String priceText = priceField.getText().trim();
-                String descText = description.getText().trim();
-                String contactText = contactField.getText().trim();
 
-                // Save to a text file
-                try (FileWriter writer = new FileWriter("profile.txt", true)) {
-                    writer.write("Name: " + nameText + "\n");
-                    writer.write("Program/Occupation: " + progText + "\n");
-                    writer.write("Price: " + priceText + "\n");
-                    writer.write("Description: " + descText + "\n");
-                    writer.write("Contact: " + contactText + "\n");
-
-                    // Show success popup
-                    JOptionPane.showMessageDialog(frame,  nameText + ", your profile is saved!");
-                } catch (IOException ex) {
-                    JOptionPane.showMessageDialog(frame, "Error saving file.", "Error", JOptionPane.ERROR_MESSAGE);
-                    ex.printStackTrace();
-                }
-            });
 
             panel.add(Box.createVerticalGlue());
             frame.add(panel);
@@ -145,6 +70,6 @@ public class TutorProfileView extends JFrame {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new MakeProfileView());
+        SwingUtilities.invokeLater(() -> new TutorProfileView());
     }
 }

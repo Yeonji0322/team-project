@@ -1,0 +1,19 @@
+Name: Alex
+Program/Occupation: Bioinformatics 2nd year
+Description: Hi! nice to meet you :)
+Name: alexandra
+Program/Occupation: bcb spec 2nd year
+Description: lollolololololololo
+
+
+:)
+Name: Alex
+Program/Occupation: BCB Spec, Ecology minor. 3rd year
+Price: 35
+Description: Suffering through BCB/CS courses too? I got you bro
+Contact: lexi.lubczenko@mail.utoronto.ca
+Name: ava
+Program/Occupation: cs spec 4th year
+Price: 40
+Description: hey im ava im the coolest
+Contact: ava.ava@ava.com
